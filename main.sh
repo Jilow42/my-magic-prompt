@@ -43,7 +43,7 @@ RemoveFile()
 }
 RemoveDir()
 {
-    if [[ ! -z "$arg" ]] && [[ -d"$arg" ]]; then
+    if [[ ! -z "$arg" ]] && [[ -d "$arg" ]]; then
         rm -r $arg
         echo "YES BO-E !"
     else
