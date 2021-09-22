@@ -287,12 +287,12 @@ if [ "$log" = "flo" ] && [ "$pswrd" = "plop" ]; then
         echo
         read -p 'Type a commande: ' cmd arg
         case $cmd in
-            help ) Help;;
+            help | -h ) Help;;
             ls ) List;;
             rm ) RemoveFile $arg;;
-            rmd ) RemoveDir $arg;;
+            rmd | rmdir ) RemoveDir $arg;;
             about ) About;;
-            version ) Version;;
+            version | --v | vers ) Version;;
             age ) Age;;
             quit ) Quit;;
             profile ) Profile;;
