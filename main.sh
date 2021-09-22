@@ -98,8 +98,18 @@ Profile()
 Password()
 {
     read -p 'Enter a new password: ' newpswrd
-    pswrd="$newpswrd"
-    echo "Your password have been change to $pswrd "
+    read -p 'Confirmation y/n ? ' conf
+    re='^[yn]'
+    if ! [[ $conf =~ $re ]] ; then  
+            echo "Sorry I didnt get that"
+            echo -e "Please try again."
+        elif [ $conf == 'n' ]; then
+            echo "you choose not to change it after all"
+        else
+            pswrd="$newpswrd"
+            echo "Your password have been change to $pswrd "
+    fi
+    
 }
 Goto()
 {
@@ -151,15 +161,15 @@ RockPapperScissors()
 
     currentRound=-1
 
-    botWin=0
-    p1Win=0
+    # botWin=0
+    # p1Win=0
 
     p1DisplayChosen=-1
     botDisplayChosen=-1
 
     digit='^[0-9]+$' #expression used to find any character that is NOT a digit.
 
-    echo -e "Rock, Paper, Scissors!"
+    echo -e "\033[1mRock, Paper, Scissors!\033[0m"
 
     while true; do # Setup the numbeer of turn
     echo -n "How many rounds do you want to play: "
@@ -175,7 +185,7 @@ RockPapperScissors()
         fi
     done
 
-    re='^[rps]+$' #expression used to find any character that is not 'r', 'p' or 's'
+    re='^[rpsk]+$' #expression used to find any character that is not 'r', 'p' or 's'
     currentRound=1
 
     while [ $rounds -gt 0 ]; do # setup bot choice of move
@@ -194,6 +204,8 @@ RockPapperScissors()
         [ "$p1Chosen" == "r" ] && p1DisplayChosen="Rock"
         [ "$p1Chosen" == "p" ] && p1DisplayChosen="Paper"
         [ "$p1Chosen" == "s" ] && p1DisplayChosen="Scissors"
+        [ "$p1Chosen" == "k" ] && p1DisplayChosen="SuperKitty"
+
 
         [ "$botChosen" == "r" ] && botDisplayChosen="Rock"
         [ "$botChosen" == "p" ] && botDisplayChosen="Paper"
@@ -222,6 +234,11 @@ RockPapperScissors()
         [ "$botChosen" == "p" ] && p1Win=1
         fi
 
+        if [ "$p1Chosen" == "k" ]; then
+        [ "$botChosen" == "r" ] && p1Win=1
+        [ "$botChosen" == "s" ] && p1Win=1
+        fi
+
         # Add the score before going to the next round or the end
         if [ "$botWin" == "0" ] && [ "$p1Win" == "0" ]; then
         echo "It's a draw!"
@@ -233,6 +250,7 @@ RockPapperScissors()
         ((botScore++))
         fi
 
+        # the number of remaining rounds decrease and the current round increase
         echo -e "\n"
         ((rounds--))
         ((currentRound++))

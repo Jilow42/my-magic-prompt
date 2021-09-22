@@ -1,41 +1,43 @@
 # Bash evaluation
 This was my evaluation for Bash at MyDigitalSchool - Paris.
+
 Author : Florian LINA
-git :
+
+git : https://github.com/Jilow42/my-magic-prompt
 
 ## Evaluation : My Magic Prompt
 
+To acces the prompt menu you have to connect yourself via login name and a password. The projct must be in a directory named ~/my-magic-prompt/ 
 
-Pour accéder au prompt vous devrez faire en sorte d’entrer un mot de passe et un login spécifique. L’intégralité du projet devra être réaliser dans un dossier ~/my-magic-prompt/
-
-Ce prompt devra comporter les commandes de base suivantes :
-* help : qui indiquera les commandes que vous pouvez utiliser
-* ls : lister des fichiers et les dossiers visible comme caché
-* rm : supprimer un fichier
-* rmd ou rmdir : supprimer un dossier
-* about : une description de votre programme
-* version ou --v ou vers :  affiche la version de votre prompt
-* age : vous demande votre âge et vous dit si vous êtes majeur ou mineur
-* quit : permet de sortir du prompt
-* profile : permet d’afficher toutes les informations sur vous même :
-First Name, Last name, age, email
-* passw : permet de changer le password avec une demande de confirmation
-* cd : aller dans un dossier que vous venez de créer ou de revenir à un dossier 
-précédent
-* pwd : indique le répertoire actuelle courant
-* hour : permet de donner l’heure actuelle
-* *: indiquer une commande inconnu
-* httpget : permet de télécharger le code source html d’une page web et de l’enregistrer dans un fichier spécifique. Votre prompt doit vous demander quel sera le nom du fichier.
-* smtp : vous permet d’envoyer un mail avec une adresse un sujet et le corp du mail
-* open : ouvrir un fichier directement dans l’éditeur VIM si le fichier même si le fichier n’existe pas
+This prompt ned to have those commands :
+* help : indicate all possible commande and what they do
+* ls : list of all files and directory hiden or not
+* rm : delete a file
+* rmd : delete a directory
+* about : a description of the program
+* version : show the version of this prompt
+* age : ask for your age and tell you if you'r a minor 
+* quit : allow to quit the prompt
+* profile : show different inforrmation about you :
+    * First Name
+    * Last name 
+    * age
+    * email
+* passw : allow you to change your password after confirmation
+* cd : go to file or directory of your choice
+* pwd : show current repository
+* hour : show you the hour
+* httpget : allow you to download the html souce code of a web page and save it on a file. The prompt will ask you to nam the file. 
+* smtp : aallow you to snd an email with a subjct and a message
+* open : opn a file with VIM even if the file does not already exist
+* *: show up whn its an unknown command
 
 ## Evaluation BONUS : My Magic Prompt
 
-Ajouter la commande :
-* Rps : permet de jouer à 2 joueurs à Rock Paper Scissors
-* Faite en sorte que deux joueurs puisse jouer
-* Demander le nom du P1 et le nom du P2
-* Faite en sorte que le prompt affiche le nom du joueur qui doit jouer au tour par tour
-* Faite en sorte de déterminer un vainqueur en 3 manches
-* Faite en sorte de compter les points
-* Faite en sorte de créer un pouvoir ultime qui permet de gagner à tous les coups (SuperKitty)
+Ad the command: 
+* rps: allow you to play Rock Paper Scissors against a bot
+    * Ask the name of the player
+    * Show the name of the player when it's is turn
+    * You can choose how many round will b played
+    * Points will be conted
+    * The player can use a super power with th use of "SuperKitty" and will won the round
