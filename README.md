@@ -10,13 +10,13 @@ git : https://github.com/Jilow42/my-magic-prompt
 To acces the prompt menu you have to connect yourself via login name and a password. The projct must be in a directory named ~/my-magic-prompt/ 
 
 This prompt ned to have those commands :
-* help : indicate all possible commande and what they do
+* help : indicate all possible command and what they do
 * ls : list of all files and directory hiden or not
 * rm : delete a file
 * rmd : delete a directory
 * about : a quick description of the program
 * version : show the version of this prompt
-* age : ask for your age and tell you if you'r a minor
+* age : ask for your age and tell you if you'r a minor and if so kicks you out
 * quit : allow to quit the prompt
 * profile : show different information about you :
     * First Name
