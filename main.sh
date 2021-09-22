@@ -138,7 +138,10 @@ Mail()
         echo "Checking mailutils intallation"
         sudo apt install mailutils
     fi
-    mail -s 'Test' florian-lina@outlook.fr <<< 'message'
+    read -p 'What is the subject' subject
+    read -p 'What is your message' message
+    mail -s "$subject" florian-lina@outlook.fr <<< "$message"
+    echo "Your mail have been send."
     # technicly working but I can't find why not
 }
 Open()
