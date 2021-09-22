@@ -14,23 +14,23 @@ This prompt ned to have those commands :
 * ls : list of all files and directory hiden or not
 * rm : delete a file
 * rmd : delete a directory
-* about : a description of the program
+* about : a quick description of the program
 * version : show the version of this prompt
-* age : ask for your age and tell you if you'r a minor 
+* age : ask for your age and tell you if you'r a minor
 * quit : allow to quit the prompt
-* profile : show different inforrmation about you :
+* profile : show different information about you :
     * First Name
     * Last name 
     * age
     * email
 * passw : allow you to change your password after confirmation
-* cd : go to file or directory of your choice
+* cd : go to file or directory of your choice or to go back one before
 * pwd : show current repository
-* hour : show you the hour
-* httpget : allow you to download the html souce code of a web page and save it on a file. The prompt will ask you to nam the file. 
-* smtp : aallow you to snd an email with a subjct and a message
-* open : opn a file with VIM even if the file does not already exist
-* *: show up whn its an unknown command
+* hour : show you the current time
+* httpget : allow you to download the html souce code of a web page and save it on a file. The prompt will ask you to nam the file 
+* smtp : allow you to send an email with a subject and a message
+* open : open a file with VIM even if the file does not already exist
+* *: show up when its an unknown command
 
 ## Evaluation BONUS : My Magic Prompt
 

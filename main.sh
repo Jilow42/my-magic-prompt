@@ -5,23 +5,24 @@ Help()
     echo
     echo "This is the help commande description"
     echo
-    echo -e "\033[1mhelp :\033[0m qui indiquera les commandes que vous pouvez utiliser"
-    echo -e "\033[1mls :\033[0m lister des fichiers et les dossiers visible comme caché"
-    echo -e "\033[1mrm :\033[0m supprimer un fichier"
-    echo -e "\033[1mrmd :\033[0m supprimer un dossier"
-    echo -e "\033[1mabout :\033[0m une description de votre programme"
-    echo -e "\033[1mversion :\033[0m affiche la version de votre prompt"
-    echo -e "\033[1mage :\033[0m vous demande votre âge et vous dit si vous êtes majeur ou mineur"
-    echo -e "\033[1mquit :\033[0m permet de sortir du prompt"
-    echo -e "\033[1mprofile :\033[0m permet d’afficher toutes les informations sur vous même: First Name, Last name, age, email"
-    echo -e "\033[1mpassw :\033[0m permet de changer le password avec une demande de confirmation"
-    echo -e "\033[1mcd :\033[0m aller dans un dossier que vous venez de créer ou de revenir à un dossier précédent"
-    echo -e "\033[1mpwd :\033[0m indique le répertoire actuelle courant"
-    echo -e "\033[1mhour :\033[0m permet de donner l’heure actuelle"
-    echo -e "\033[1m* :\033[0m indiquer une commande inconnu"
-    echo -e "\033[1mhttpget :\033[0m permet de télécharger le code source html d’une page web et de l’enregistrer dans un fichier spécifique. Votre prompt doit vous demander quel sera le nom du fichier."
-    echo -e "\033[1msmtp :\033[0m vous permet d’envoyer un mail avec une adresse un sujet et le corp du mail"
-    echo -e "\033[1mopen:\033[0m ouvrir un fichier directement dans l’éditeur VIM si le fichier même si le fichier n’existe pas"
+    echo -e "\033[1mhelp :\033[0m indicate all possible command and what they do"
+    echo -e "\033[1mls :\033[0m list of all files and directory hiden or not"
+    echo -e "\033[1mrm :\033[0m delete a file"
+    echo -e "\033[1mrmd :\033[0m delete a directory"
+    echo -e "\033[1mabout :\033[0m a quick description of the program"
+    echo -e "\033[1mversion :\033[0m show the version of this prompt"
+    echo -e "\033[1mage :\033[0m ask for your age and tell you if you'r a minor"
+    echo -e "\033[1mquit :\033[0m allow to quit the prompt"
+    echo -e "\033[1mprofile :\033[0m show different information about you: First Name, Last name, age, email"
+    echo -e "\033[1mpassw :\033[0m allow you to change your password after confirmation"
+    echo -e "\033[1mcd :\033[0m go to file or directory of your choice or to go back one before"
+    echo -e "\033[1mpwd :\033[0m show current repository"
+    echo -e "\033[1mhour :\033[0m show you the current time"
+    echo -e "\033[1m* :\033[0m show up whn its an unknown command"
+    echo -e "\033[1mhttpget :\033[0m allow you to download the html souce code of a web page and save it on a file. The prompt will ask you to nam the file"
+    echo -e "\033[1msmtp :\033[0m allow you to send an email with a subject and a message"
+    echo -e "\033[1mopen:\033[0m open a file with VIM even if the file does not already exist"
+    echo -e "\033[1mrps:\033[0m allow you to play Rock Paper Scissors against a bot"
     echo
     sleep 5
 }
@@ -309,7 +310,7 @@ if [ "$log" = "flo" ] && [ "$pswrd" = "plop" ]; then
 else
     echo
     echo "Nope ! You fail";
-    echo "Bye Bye you mf !"
+    echo "Bye Bye !"
     exit 1
 fi
 
