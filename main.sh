@@ -33,7 +33,7 @@ List()
 }
 RemoveFile()
 {
-    if [[ ! -z "$arg" ]] && [[ -f"$arg" ]]; then
+    if [[ ! -z "$arg" ]] && [[ -f "$arg" ]]; then
         rm $arg
         echo "YES BO-E !"
     else
