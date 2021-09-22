@@ -226,19 +226,16 @@ RockPapperScissors()
         if [ "$p1Chosen" == "r" ]; then
         [ "$botChosen" == "p" ] && botWin=1
         [ "$botChosen" == "s" ] && p1Win=1
-        fi
 
-        if [ "$p1Chosen" == "p" ]; then
+        elif [ "$p1Chosen" == "p" ]; then
         [ "$botChosen" == "r" ] && botWin=1
         [ "$botChosen" == "s" ] && p1Win=1
-        fi
 
-        if [ "$p1Chosen" == "s" ]; then
+        elif [ "$p1Chosen" == "s" ]; then
         [ "$botChosen" == "r" ] && botWin=1
         [ "$botChosen" == "p" ] && p1Win=1
-        fi
 
-        if [ "$p1Chosen" == "k" ]; then
+        elif [ "$p1Chosen" == "k" ]; then
         [ "$botChosen" == "r" ] && p1Win=1
         [ "$botChosen" == "s" ] && p1Win=1
         fi
