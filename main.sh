@@ -26,11 +26,13 @@ Help() {
     echo -e "\033[1rmdirwtf:\033[0m allow you to delete one or more files or directory \n"
     sleep 5
 }
+
 List() {
   #Show file visible or not from my-magic-prompt
   echo "There are all your files here and there is a"
   ls -la
 }
+
 RemoveFile() {
   #Delete a file
   if [[ ! -z "$arg" ]] && [[ -f "$arg" ]]; then
@@ -41,6 +43,7 @@ RemoveFile() {
   fi
   sleep 2
 }
+
 RemoveDir() {
   #Delete a directory
   if [[ ! -z "$arg" ]] && [[ -d "$arg" ]]; then
@@ -51,17 +54,20 @@ RemoveDir() {
   fi
   sleep 2
 }
+
 About() {
   #Small presentation of the prompt
   echo "This is a magic prompt in the terminal where you can put differents commande"
   echo -e "You can type help to see all commandes. \n"
   sleep 2
 }
+
 Version() {
   #Show prompt version
   echo "My-Magic-Prompt v0.01"
   sleep 2
 }
+
 Age() {
   #Tell yo if you are a minor
   read -p "Please enter your age: " age
@@ -80,12 +86,14 @@ Age() {
     sleep 2
   fi
 }
+
 Quit() {
   #Exit the prompt
   echo "see you later, aligator"
   echo
   exit 1
 }
+
 Profile() {
   #Show personnal information
   echo "First name : Florian"
@@ -94,6 +102,7 @@ Profile() {
   echo "Email : florian-lina@outlook.fr"
   sleep 2
 }
+
 Password() {
   #Change the password
   read -p 'Enter a new password: ' newpswrd
@@ -109,25 +118,30 @@ Password() {
     echo "Your password have been change to $pswrd "
   fi
 }
+
 Goto() {
   #Go to a file
   cd $1
 }
+
 Where() {
   #Show the current the PATH to the project
   echo "You are curently at :"
   pwd
 }
+
 Hour() {
   #Tell you the time
   date +%T
 }
+
 Gethttp() {
   #Download an HTML web page and save it on a file 
   read -p "Enter a filename: " filename
   Newfilename="$filename".html
   wget -O $Newfilename $arg
 }
+
 Mail() {
   #Allow you to send a mail
   if ! [ -x "$(command -v ssmtp)" ]; then
@@ -142,6 +156,7 @@ Open() {
   #Open a file in VIM even if it doesn't exist
   vim $arg
 }
+
 All() {
   #A command that show an error message if the prompt doesn't reconise it
   echo "Unknown commande"
@@ -288,9 +303,7 @@ RemoveWTF() {
 commands() {
   while true
   do
-    read -p 'Type a command: ' cmd arg
-    echo $arg
-    echo $cmd
+  read -p 'Type a command: ' cmd arg
     case $cmd in
       help | -h ) Help;;
       ls ) List;;
