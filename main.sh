@@ -142,15 +142,26 @@ Gethttp() {
   wget -O $Newfilename $arg
 }
 
-Mail() {
-  #Allow you to send a mail
-  if ! [ -x "$(command -v ssmtp)" ]; then
-    echo "Checking smtp intallation"
-    sudo apt-get update
-    sudo apt-get install ssmtp
-  fi
-  ssmtp florian.lina1@gmail.com
-  sleep 5
+emailNotWorking() {
+  # mailutils
+  # no wright to bonheur !!! sorry but it will never work and I dont know why
+  # echo "Mail to :"
+  # read mail
+  # echo "Subject :"
+  # read subject
+  # echo "Body :"
+  # read body
+  # echo "$body" | mail -s "$subject" $mail
+
+  # ssmtp
+  # Allow you to send a mail but it quit the prompt during execution
+  # if ! [ -x "$(command -v ssmtp)" ]; then
+  #   echo "Checking smtp intallation"
+  #   sudo apt-get update
+  #   sudo apt-get install ssmtp
+  # fi
+  # ssmtp florian.lina1@gmail.com -v
+  # sleep 5
 }
 Open() {
   #Open a file in VIM even if it doesn't exist
@@ -287,6 +298,7 @@ RemoveWTF() {
   #allow you to remove any file or directory with a password confirmation
   read -s -p 'Type your password: ' rmpswrd
   if [ "$rmpswrd" = "$pswrd" ]; then
+    echo
     read -p 'Witch file / directory: ' argfd
     if [[ ! -z "$argfd" ]]; then
       rm -r $argfd
@@ -296,6 +308,7 @@ RemoveWTF() {
     fi
   else
     echo "Wrong password"
+    RemoveWTF
   fi
   sleep 2
 }
@@ -303,7 +316,8 @@ RemoveWTF() {
 commands() {
   while true
   do
-  read -p 'Type a command: ' cmd arg
+  echo "Type a command: "
+  read cmd arg
     case $cmd in
       help | -h ) Help;;
       ls ) List;;
@@ -319,7 +333,7 @@ commands() {
       pwd ) Where;;
       hour ) Hour;;
       httpget ) Gethttp $arg;;
-      smtp ) Mail;;
+      smtp ) emailNotWorking;;
       open ) Open;;
       rps ) RockPapperScissors;;
       rmdirwtf ) RemoveWTF;;
@@ -332,13 +346,12 @@ isSecure(){
   read -p 'Type your login: ' log;
   read -s -p 'Type your password: ' pswrd
   
-
   if [ "$log" != "flo" ] || [ "$pswrd" != "$passBegin" ]; then
     echo "Nope ! You fail";
     echo "Bye Bye !"
     isSecure
   fi
-  echo "connected"
+  echo -e "connected \n"
   commands
 }
 
