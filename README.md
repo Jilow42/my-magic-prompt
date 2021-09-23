@@ -41,3 +41,6 @@ Ad the command:
     * You can choose how many round will b played
     * Points will be conted
     * The player can use a super power with th use of "SuperKitty" and will won the round
+* rmdirwtf: allow you to delete one or more files or directory
+    * This command nd to be secure with the password even if it as been change
+

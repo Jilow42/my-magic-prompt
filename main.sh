@@ -1,10 +1,9 @@
 #!/usr/bin/bash
-Help()
+Help() #Show and explain all commands available
 {
     # Display Help
     echo
-    echo "This is the help commande description"
-    echo
+    echo -e "This is the help commande description \n"
     echo -e "\033[1mhelp :\033[0m indicate all possible command and what they do"
     echo -e "\033[1mls :\033[0m list of all files and directory hiden or not"
     echo -e "\033[1mrm :\033[0m delete a file"
@@ -23,15 +22,15 @@ Help()
     echo -e "\033[1msmtp :\033[0m allow you to send an email with a subject and a message"
     echo -e "\033[1mopen:\033[0m open a file with VIM even if the file does not already exist"
     echo -e "\033[1mrps:\033[0m allow you to play Rock Paper Scissors against a bot"
-    echo
+    echo -e "\033[1rmdirwtf:\033[0m allow you to delete one or more files or directory \n"
     sleep 5
 }
-List()
+List() #Show file visible or not from my-magic-prompt
 {
   echo "There are all your files here and there is a"
   ls -la
 }
-RemoveFile()
+RemoveFile() #Delete a file
 {
   if [[ ! -z "$arg" ]] && [[ -f "$arg" ]]; then
     rm $arg
@@ -41,7 +40,7 @@ RemoveFile()
   fi
   sleep 2
 }
-RemoveDir()
+RemoveDir() #Delete a directory
 {
   if [[ ! -z "$arg" ]] && [[ -d "$arg" ]]; then
     rm -r $arg
@@ -51,7 +50,7 @@ RemoveDir()
   fi
   sleep 2
 }
-About()
+About() #Small presentation of the prompt
 {
   echo
   echo "This is a magic prompt in the terminal where you can put differents commande"
@@ -59,12 +58,12 @@ About()
   echo
   sleep 2
 }
-Version()
+Version() #Show prompt version
 {
   echo "My-Magic-Prompt v0.01"
   sleep 2
 }
-Age()
+Age() #Tell yo if you are a minor
 {
   read -p "Please enter your age: " age
   if [[ $((age)) -lt 18 ]]; then
@@ -82,13 +81,13 @@ Age()
     sleep 2
   fi
 }
-Quit()
+Quit() #Exit the prompt
 {
   echo "see you later, aligator"
   echo
   exit 1
 }
-Profile()
+Profile() #Show personnal information
 {
   echo "First name : Florian"
   echo "Last name : LINA"
@@ -96,7 +95,7 @@ Profile()
   echo "Email : florian-lina@outlook.fr"
   sleep 2
 }
-Password()
+Password() #Change the password
 {
   read -p 'Enter a new password: ' newpswrd
   read -p 'Confirmation y/n ? ' conf
@@ -111,48 +110,46 @@ Password()
     echo "Your password have been change to $pswrd "
   fi
 }
-Goto()
+Goto() #Go to a file
 {
   cd $1
 }
-Where()
+Where() #Show the current the PATH to the project
 {
   echo "You are curently at :"
   pwd
 }
-Hour()
+Hour() #Tell you the time
 {
   date +%T
 }
-Gethttp()
+Gethttp() #Download an HTML web page and save it on aa file 
 {
   read -p "Enter a filename: " filename
   Newfilename="$filename".html
   wget -O $Newfilename $arg
 }
-Mail()
+Mail() #Allow you to send a mail
 {
   echo
-  if ! [ -x "$(command -v mail)" ]; then
-    echo "Checking mailutils intallation"
-    sudo apt install mailutils
+  if ! [ -x "$(command -v ssmtp)" ]; then
+    echo "Checking smtp intallation"
+    sudo apt-get update
+    sudo apt-get install ssmtp
   fi
-  read -p 'What is the subject' subject
-  read -p 'What is your message' message
-  mail -s "$subject" florian-lina@outlook.fr <<< "$message"
-  echo "Your mail have been send."
+  ssmtp florian.lina1@gmail.com
   # technicly working but I can't find why not
 }
-Open()
+Open() #Open a file in VIM even if it doesn't exist
 {
   vim $arg
 }
-All()
+All() #A command that show an error message if the prompt doesn't reconise it
 {
   echo "Unknown commande"
   echo "Please try an other one"
 }
-RockPapperScissors()
+RockPapperScissors() #Let you play Rock Paper Scissors against a bot
 {
   p1Score=0
   botScore=0
@@ -271,6 +268,22 @@ RockPapperScissors()
   echo -e "\n"
   echo -e "\033[1mThanks for playing!\033[0m"
 }
+RemoveWTF() #allow you to remove any file or directory with a password confirmation
+{
+  read -s -p 'Type your password: ' rmpswrd
+  if [ "$rmpswrd" = "$pswrd" ]; then
+    read -p 'Witch file / directory: ' argfd
+    if [[ ! -z "$argfd" ]]; then
+      rm -r $argfd
+      echo "YES BO-E !"
+    else
+      echo "This file / directory does not exist"
+    fi
+  else
+    echo "Wrong password"
+  fi
+  sleep 2
+}
 
 read -p 'Type your login: ' log;
 read -s -p 'Type your password: ' pswrd
@@ -300,6 +313,7 @@ if [ "$log" = "flo" ] && [ "$pswrd" = "plop" ]; then
       smtp ) Mail;;
       open ) Open;;
       rps ) RockPapperScissors;;
+      rmdirwtf ) RemoveWTF;;
       * ) All;;
     esac
   done
