@@ -1,7 +1,8 @@
 #!/usr/bin/bash
-Help() #Show and explain all commands available
-{
-    # Display Help
+passBegin="plop"
+
+Help() {
+    # Display Help that show and explain all commands available
     echo
     echo -e "This is the help commande description \n"
     echo -e "\033[1mhelp :\033[0m indicate all possible command and what they do"
@@ -25,13 +26,13 @@ Help() #Show and explain all commands available
     echo -e "\033[1rmdirwtf:\033[0m allow you to delete one or more files or directory \n"
     sleep 5
 }
-List() #Show file visible or not from my-magic-prompt
-{
+List() {
+  #Show file visible or not from my-magic-prompt
   echo "There are all your files here and there is a"
   ls -la
 }
-RemoveFile() #Delete a file
-{
+RemoveFile() {
+  #Delete a file
   if [[ ! -z "$arg" ]] && [[ -f "$arg" ]]; then
     rm $arg
     echo "YES BO-E !"
@@ -40,8 +41,8 @@ RemoveFile() #Delete a file
   fi
   sleep 2
 }
-RemoveDir() #Delete a directory
-{
+RemoveDir() {
+  #Delete a directory
   if [[ ! -z "$arg" ]] && [[ -d "$arg" ]]; then
     rm -r $arg
     echo "YES BO-E !"
@@ -50,21 +51,19 @@ RemoveDir() #Delete a directory
   fi
   sleep 2
 }
-About() #Small presentation of the prompt
-{
-  echo
+About() {
+  #Small presentation of the prompt
   echo "This is a magic prompt in the terminal where you can put differents commande"
-  echo "You can type help to see all commandes."
-  echo
+  echo -e "You can type help to see all commandes. \n"
   sleep 2
 }
-Version() #Show prompt version
-{
+Version() {
+  #Show prompt version
   echo "My-Magic-Prompt v0.01"
   sleep 2
 }
-Age() #Tell yo if you are a minor
-{
+Age() {
+  #Tell yo if you are a minor
   read -p "Please enter your age: " age
   if [[ $((age)) -lt 18 ]]; then
     echo "You are way to young to be here"
@@ -81,22 +80,22 @@ Age() #Tell yo if you are a minor
     sleep 2
   fi
 }
-Quit() #Exit the prompt
-{
+Quit() {
+  #Exit the prompt
   echo "see you later, aligator"
   echo
   exit 1
 }
-Profile() #Show personnal information
-{
+Profile() {
+  #Show personnal information
   echo "First name : Florian"
   echo "Last name : LINA"
   echo "Age : 25"
   echo "Email : florian-lina@outlook.fr"
   sleep 2
 }
-Password() #Change the password
-{
+Password() {
+  #Change the password
   read -p 'Enter a new password: ' newpswrd
   read -p 'Confirmation y/n ? ' conf
   re='^[yn]'
@@ -110,47 +109,47 @@ Password() #Change the password
     echo "Your password have been change to $pswrd "
   fi
 }
-Goto() #Go to a file
-{
+Goto() {
+  #Go to a file
   cd $1
 }
-Where() #Show the current the PATH to the project
-{
+Where() {
+  #Show the current the PATH to the project
   echo "You are curently at :"
   pwd
 }
-Hour() #Tell you the time
-{
+Hour() {
+  #Tell you the time
   date +%T
 }
-Gethttp() #Download an HTML web page and save it on aa file 
-{
+Gethttp() {
+  #Download an HTML web page and save it on a file 
   read -p "Enter a filename: " filename
   Newfilename="$filename".html
   wget -O $Newfilename $arg
 }
-Mail() #Allow you to send a mail
-{
-  echo
+Mail() {
+  #Allow you to send a mail
   if ! [ -x "$(command -v ssmtp)" ]; then
     echo "Checking smtp intallation"
     sudo apt-get update
     sudo apt-get install ssmtp
   fi
   ssmtp florian.lina1@gmail.com
-  # technicly working but I can't find why not
+  sleep 5
 }
-Open() #Open a file in VIM even if it doesn't exist
-{
+Open() {
+  #Open a file in VIM even if it doesn't exist
   vim $arg
 }
-All() #A command that show an error message if the prompt doesn't reconise it
-{
+All() {
+  #A command that show an error message if the prompt doesn't reconise it
   echo "Unknown commande"
   echo "Please try an other one"
 }
-RockPapperScissors() #Let you play Rock Paper Scissors against a bot
-{
+
+RockPapperScissors() {
+  #Let you play Rock Paper Scissors against a bot
   p1Score=0
   botScore=0
 
@@ -268,8 +267,9 @@ RockPapperScissors() #Let you play Rock Paper Scissors against a bot
   echo -e "\n"
   echo -e "\033[1mThanks for playing!\033[0m"
 }
-RemoveWTF() #allow you to remove any file or directory with a password confirmation
-{
+
+RemoveWTF() {
+  #allow you to remove any file or directory with a password confirmation
   read -s -p 'Type your password: ' rmpswrd
   if [ "$rmpswrd" = "$pswrd" ]; then
     read -p 'Witch file / directory: ' argfd
@@ -285,16 +285,12 @@ RemoveWTF() #allow you to remove any file or directory with a password confirmat
   sleep 2
 }
 
-read -p 'Type your login: ' log;
-read -s -p 'Type your password: ' pswrd
-
-if [ "$log" = "flo" ] && [ "$pswrd" = "plop" ]; then
-  echo
-  echo "Well done"
+commands() {
   while true
   do
-    echo
-    read -p 'Type a commande: ' cmd arg
+    read -p 'Type a command: ' cmd arg
+    echo $arg
+    echo $cmd
     case $cmd in
       help | -h ) Help;;
       ls ) List;;
@@ -317,9 +313,25 @@ if [ "$log" = "flo" ] && [ "$pswrd" = "plop" ]; then
       * ) All;;
     esac
   done
-else
-  echo
-  echo "Nope ! You fail";
-  echo "Bye Bye !"
-  exit 1
-fi
+}
+
+isSecure(){
+  read -p 'Type your login: ' log;
+  read -s -p 'Type your password: ' pswrd
+  
+
+  if [ "$log" != "flo" ] || [ "$pswrd" != "$passBegin" ]; then
+    echo "Nope ! You fail";
+    echo "Bye Bye !"
+    isSecure
+  fi
+  echo "connected"
+  commands
+}
+
+main() {
+  isSecure
+  #this is the main command
+}
+
+main
